@@ -10,7 +10,7 @@ To download Postgresql visit their official [website](https://www.postgresql.org
 * Create a shourtcut of the downloaded file.  
 * Go to the properties of the shourcut and in the target field add this line ```--install_runtimes 0``` 
 
-![image_2](images\two.png)
+![image_2](images/two.png)
 
 * Now install
 
@@ -19,16 +19,16 @@ To download Postgresql visit their official [website](https://www.postgresql.org
 To add PostgreSQL to the path we have to copy the path to PostGreSQL installation directory to the path variable.
 
 * First we have to copy the path to the bin folder in the installation directory.
-![image_3](images\three.png)
+![image_3](images/three.png)
 
 * Then we open the System Environment Variables Setting
-![image_4](images\four.png)
+![image_4](images/four.png)
 
 * Then we go to the **Environment Variables** option
-![image_5](images\five.png)
+![image_5](images/five.png)
 
 * Then we add a new line to the Path and paste our copies directory path
-![image_6](images\six.png)
+![image_6](images/six.png)
 
 
 Now we can access PostgreSQL from Commandline interface. 
@@ -41,13 +41,13 @@ When we install PostgreSQL the default username is postgres. So to login as the 
 
 After that we will have to provide the password that we set during installation . Then we will be logged in as default user.
 
-![image_7](images\seven.png)
+![image_7](images/seven.png)
 
 To get help we have to type:
 
 `\?`
 
-![image_8](images\eight.png)
+![image_8](images/eight.png)
 
 ## Creating and Inserting data into database
 
@@ -55,7 +55,7 @@ To get the list of all the data bases we have to type:
 
 `\l`
 
-![image_nine](images\nine.png)
+![image_nine](images/nine.png)
 
 If we want to create a new database we have to type:
 
@@ -65,7 +65,7 @@ Let's say we want to create a database named **test** . So we have to type:
 
 `CREATE DATABASE test;`
 
-![image_ten](images\ten.png)
+![image_ten](images/ten.png)
 
 To drop or delet a database we have to type:
 
@@ -75,7 +75,7 @@ So, if we want to drop the **test** database that we created we have to type:
 
 `DROP DATABASE test;`
 
-![image_11](images\eleven.png)
+![image_11](images/eleven.png)
 
 To connect to a database we have to type:
 
@@ -85,7 +85,7 @@ Let's say we want to connect to a database named **nissan** ,then we have to typ
 
 `\c nissan`
 
-![image_12](images\twelve.png)
+![image_12](images/twelve.png)
 
 ### Creating a table in a database
 
