@@ -91,14 +91,14 @@ Let's say we want to connect to a database named **nissan** ,then we have to typ
 
 To create a table we have to type :
 
-```
+```sql
 CREATE TABLE table_name(
     column_name data_type constraints(if any)
 );
 ```
 Let's say we want to create a table named **person** with the columns of **id** which is a *integer* datatype, **first_name, last_name** and **gender** which are of type *charachter(varchar)* and date_of_birth which is of type *DATE* . So we have to type:
 
-```
+```sql
 CREATE TABLE person (
    id INT,
    first_name VARCHAR(50),
@@ -110,7 +110,7 @@ CREATE TABLE person (
 This command will create a table without any constrains which means that if we want we can insert a empty entry into the table. So to avoid these situations we want to creata a table with constraints in that way we can't insert a blank entry into the table .
 
 If we want to create the same table with constraints then we would have to type:
-```
+```sql
 CREATE TABLE person(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -126,14 +126,14 @@ In the above command we created a table similar to the one before but we have ad
 ### Inserting records into the table
 
 To insert records into the table we have to type in the format:
-```
+```sql
 INSERT INTO person(
     column_names
 ) 
 VALUES (column_values);
 ```
 In our case if we want to insert a record into our previously created table then we have to type:
-```
+```sql
 INSERT INTO person(
     first_name,
     last_name,
@@ -144,3 +144,74 @@ INSERT INTO person(
 ```
 
 This will create an entry into the table with the first_name of Nissan, last_name of Devnath, gender of MALE, date_of_birth 1998-03-23 and email of xyz@mail.com . But in the insert command we didn't give any **id** value because the id value is a BIGSERIAL as a result it will increment automatically in every entry.
+
+### Executing commands from a SQL file
+
+To execute commands from a SQL file we have to give the command:
+
+```
+\i file_name
+```
+
+Let's say we want to execute commands from a file named `person.sql` then we would have to type:
+```
+\i person.sql
+```
+Sometimes in Windows when we want to execute a file from this will give an error saying `Access Denied` . In that case we would have to encapsulate the file name in single quotes like below:
+```
+\i 'person.sql'
+```
+
+### Querying records from table
+
+To see an entire table we have to type:
+```sql
+SELECT * FROM table_name;
+```
+Here `*` means every column of the table .
+So let's say we want to see the entire table named `person`. Then we would have to type:
+
+```sql
+SELECT * FROM person;
+```
+
+Now if we don't want to see the entire table but only one or two specific column then we would have to type:
+
+```sql
+SELECT column_names FROM table_name;
+```
+So, if we want to query two column named **first_name** and **last_name** then we would have to type:
+```sql
+SELECT first_name, last_name FROM person;
+```
+
+### Querying data in ascending or descending order
+
+To query data and show the result in ascending or descending order we use the command `ORDER BY` . `ORDER BY` takes a certain column and sorts the table according to the column.
+```sql
+SELECT * FROM table_name ORDER BY column_name;
+``` 
+Now, if we want to order our `person` table query using the column `country_of_birth`, we would have to type:
+```sql
+SELECT * FROM person ORDER BY country_of_birth;
+```
+This command will show the query in ascending order of the column `country_of_birth` . Ascending is the default order if we don't specify anything. If we wanted to order the query is descending order, we have to type:
+```sql
+SELECT * FROM person ORDER BY country_of_birth DESC;
+```
+The keyword for ascending is `ASC` and for descending `DESC`.
+
+### Getting unique values from a column
+
+To get the unique values from a column we have to type:
+```sql
+SELECT DISTINCT column_name FROM table_name;
+```
+So let's say we want to get the country names(`country_of_birth` column) of all the person in the table. But we want a country to appear once meaning we want unique country names only. Then we have to type:
+```sql
+SELECT DISTINCT country_of_birth FROM person;
+```
+We can add a order by with this sql command:
+```sql
+SELECT DISTINCT country_of_birth FROM person ORDER BY country_of_birth;
+```
