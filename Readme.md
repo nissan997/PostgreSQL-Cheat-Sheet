@@ -215,3 +215,85 @@ We can add a order by with this sql command:
 ```sql
 SELECT DISTINCT country_of_birth FROM person ORDER BY country_of_birth;
 ```
+
+### Querying specific rows by values of columns
+
+To query a table and see all the data which have a certain value in a certain column,we have to type:
+```sql
+SELECT * FROM table_name WHERE column_name=value ;
+```
+Let's say we want to see all the rows in the table person where `gender` column value is **Male**. So, to do that we have to type:
+```sql
+SELECT * FROM person WHERE gender='Male';
+```
+We can filter this search by multiple criteria using the `AND` command.
+Let's say apart from getting all the **Male** row we want to see only rows which have **Bangladesh** as the `country_of_birth` .For that we have to type:
+```sql
+SELECT * FROM person WHERE gender='Male' AND country_of_birth='Bangladesh';
+```
+We can also implement `OR` logic in `WHERE` command. If we want to see all the rows with **gender** equal to `Male` and country_of_birth equal to either Bangladesh or China, Then we have to type:
+```sql
+SELECT * FROM person WHERE gender='Male' AND (country_of_birth='Bangladesh' OR country_of_birth='China');
+```
+In this way we can filter our search using multiple parameters.
+
+### Query only specific number of rows
+
+To query only a specific number of rows, we have to use `LIMIT` command .The general format is:
+```sql
+SELECT * FROM table_name LIMIT number_of_rows;
+```
+Let's say we want to see only the first 20 entries of a table, then we would have to type:
+```sql
+SELECT * FROM person LIMIT 20;
+```
+
+#### OFFSET
+
+If we want to skip some rows of a query then we would have to use the command `OFFSET`. Let's say we want to skip the first 5 rows, then we would have to type:
+```sql
+SELECT * FROM person OFFSET 5;
+```
+
+Although, `OFFSET` is an useful command. But the standard is to use `FETCH` command. The command should be given like below:
+```sql
+SELECT * FROM table_name FETCH FIRST number_of_rows ROW ONLY;
+```
+Let's say we want to get the first 5 rows of the table `person`, then we would have to type:
+```sql
+SELECT * FROM person FETCH FIRST 5 ROW ONLY;
+```
+#### IN
+The `IN` command is very helpful if we want to select multiple values from a column. 
+Let's say we want to see all the rows which have a country_of_birth value of either Germany, Bangladesh or Turkey, then using the `OR` command we would have to type:
+```sql
+SELECT * FROM person WHERE 
+country_of_birth='Bangladesh' OR country_of_birth='Germany' OR country_of_birth='Turkey';
+```
+This seems very lengthy but we can do the same thing using the `IN` command like below:
+ ```sql
+ SELECT * FROM person WHERE country_of_birth IN ('Bangladesh','Germany','Turkey');
+ ```
+ So the general format of the `IN` command is:
+ ```sql
+  SELECT * FROM person WHERE table_name IN (values);
+ ```
+
+ #### BETWEEN
+We can use the `BETWEEN` command to select rows by the value of a specific column between some values.
+Let's say we want to get all the rows that have a `date_of_birth` column value between 01 January 2000 to 01 January 2013 then we would have to type:
+```sql
+SELECT * FROM person WHERE date_of_birth BETWEEN DATE '2000-01-01' AND '2013-01-01';
+```
+#### LIKE
+Using the `LIKE` command we can target values with specific pattern. Let's say we want to get all the rows which had a `email` address that ends with **@google.com**. Then we can use the command like below:
+```sql
+SELECT * FROM person WHERE email LIKE '%@google.com';
+```
+In the above command `%` is the wildcard character . Which means '%' represents any number of unknow characters.
+
+There's another wildcard character `_` which means one character . Let's say we want all rows which had an email address of five characters followed by @ like `abcde@mail.com` then we would have to type:
+```sql
+SELECT * FROM person WHERE email LIKE '_____@%';
+```
+In the above command the five dash means five charachter followed by an `@` and any number of charachter after that which is represented by `@` .
