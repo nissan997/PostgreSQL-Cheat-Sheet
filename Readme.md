@@ -19,7 +19,7 @@ To download Postgresql visit their official [website](https://www.postgresql.org
 To add PostgreSQL to the path we have to copy the path to PostGreSQL installation directory to the path variable.
 
 * First we have to copy the path to the bin folder in the installation directory.
-![image_3](images/three.png)
+![image_3](images/three.PNG)
 
 * Then we open the System Environment Variables Setting
 ![image_4](images/four.png)
@@ -41,7 +41,7 @@ When we install PostgreSQL the default username is postgres. So to login as the 
 
 After that we will have to provide the password that we set during installation . Then we will be logged in as default user.
 
-![image_7](images/seven.png)
+![image_7](images/seven.PNG)
 
 To get help we have to type:
 
@@ -55,7 +55,7 @@ To get the list of all the data bases we have to type:
 
 `\l`
 
-![image_nine](images/nine.png)
+![image_nine](images/nine.PNG)
 
 If we want to create a new database we have to type:
 
@@ -65,7 +65,7 @@ Let's say we want to create a database named **test** . So we have to type:
 
 `CREATE DATABASE test;`
 
-![image_ten](images/ten.png)
+![image_ten](images/ten.PNG)
 
 To drop or delet a database we have to type:
 
@@ -75,7 +75,7 @@ So, if we want to drop the **test** database that we created we have to type:
 
 `DROP DATABASE test;`
 
-![image_11](images/eleven.png)
+![image_11](images/eleven.PNG)
 
 To connect to a database we have to type:
 
@@ -85,7 +85,7 @@ Let's say we want to connect to a database named **nissan** ,then we have to typ
 
 `\c nissan`
 
-![image_12](images/twelve.png)
+![image_12](images/twelve.PNG)
 
 ### Creating a table in a database
 
