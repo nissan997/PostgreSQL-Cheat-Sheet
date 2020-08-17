@@ -314,3 +314,44 @@ Let's say we want to group our query result by **country** name and count how ma
 ```sql
 SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth;
 ```
+#### HAVING
+
+We can use the `HAVING` command with `GROUP BY` to filter out query result . Let's say we want the same result as the previous `GROUP BY` command but want to see only the countries which have a **COUNT** of greater than 5, then we would have to type:
+```sql
+SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth HAVING COUNT(*) > 5;
+```
+### AGGREGATE FUNCTION
+
+These are set of predefined functions that we can use on our data to get new insights or results from the data.
+
+Let's say we have a table named `car` which has 4 columns **id**, **make**, **model** and **price** . Now if we want to know the what is the maximum value of price in the `price` column then we would have to use an *aggregate function* `MAX()` like below:
+```sql
+SELECT MAX(price) FROM car;
+```
+The above command would return the max value of the `price` column.
+
+Similarly we can use the `MIN()` function to get the minimum value and the `AVG()` function to get the average function.
+
+Some common Aggregate Functions and their usage are given below:
+
+| Function | Usage| Example |
+|----------|-------|---------|
+|MAX(*column name*)|This function is used to get the maximum value of any column| `SELECT MAX(column_name) FROM table_name;`|
+|MIN(*column name*)|This function is similar to the `MAX()` function but it is used to get the minimum value of a column|`SELECT MIN(column_name) FROM table_name;`|
+|AVG(*column name*)|The `AVERAGE` function is used to get the average value of a column|`SELECT AVG(column_name) FROM table_name;`|
+|COUNT(*)|This function counts the number of rows|`SELECT column_name,COUNT(*) FROM table_name GROUP BY column_name`|
+|ROUND(*function*)|The `ROUND` function rounds the result of any other function to the nearest integer|`SELECT ROUND(AVG(column_name)) FROM table_name;`|
+|SUM(*column_name*)|The `SUM` function calculates the sum over any query result or column|`SELECT SUM(column_name) FROM table_name`|
+
+
+Agrregate function are very useful when used with other commands like `GROUP BY` , Let's say we want to know the value of the max price from every car maker .Then we would give the command:
+```sql
+SELECT make,MAX(price) FROM car GROUP BY make;
+```
+This command would return us the max price of car from each car maker.
+
+Another example would be, if we want get the sum of all the car price of every car maker, then we would have to type:
+
+```sql
+SELECT make, SUM(price) FROM car GROUP BY make;
+```
